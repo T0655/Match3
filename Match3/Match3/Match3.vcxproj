@@ -134,8 +134,9 @@
     <ClCompile Include="AppMain.cpp" />
     <ClCompile Include="FreamControl_.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
-    <ClCompile Include="inputControl.cpp" />
+    <ClCompile Include="InputControl.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TitleScene.cpp" />
