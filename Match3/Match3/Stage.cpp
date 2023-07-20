@@ -216,4 +216,39 @@ void CreateBlock(void)
 	}
 
 	//クリックでブロックを選択
-	if (GetKeyFlg(MOUSE_INPUT_LEFT)) {}
+	if (GetKeyFlg(MOUSE_INPUT_LEFT)) {
+
+		//クリック効果音
+		PlaySoundMem(ClickSE, DX_PLAYTYPE_BACK);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
