@@ -267,9 +267,9 @@ void CreateBlock(void)
 
 			int TmpBlock = Block[Select[NEXT_CURSOR].y +
 		   1][Select[NEXT_CURSOR].x + 1].image;
-			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x
-		   + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
+			           Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
+		    1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
+			           Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
 		   1].image = TmpBlock;
         }
 		else
