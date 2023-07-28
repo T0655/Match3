@@ -39,7 +39,7 @@ int SceneManager_Initialize(GAME_MODE mode)
 		return D_ERROR;
 	}
 
-	//ゲームクリア画面
+	//ゲームメイン画面
 	Read_Error = GameMainScene_Initialize();
 	if (Read_Error == D_ERROR)
 	{

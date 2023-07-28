@@ -6,7 +6,7 @@
 /*************
 * ƒ}ƒNƒ’è‹`
 ***************/
-#define TIMELIMIT      (3600*3)//§ŒÀŽžŠÔ
+#define TIMELIMIT      (3600 * 3)//§ŒÀŽžŠÔ
 #define NUMBER_IMAGE_MAX (10)   //”Žš‰æ‘œ”
 
 /*****************
