@@ -24,7 +24,7 @@ GAME_MODE Next_Mode; //ゲームモード情報(次)
 
 /*******************************************
 * シーン管理機能：初期化処理
-* 引数：なし
+* 引数：ゲームモード情報
 * 戻り値：なし
 ********************************************/
 int SceneManager_Initialize(GAME_MODE mode)
@@ -80,8 +80,8 @@ void SceneManager_Update(void)
 	switch (Game_Mode)
 	{
 	  case E_TITLE:
-			TitleScene_Update();
-			break;
+		  TitleScene_Update();
+		  break;
 	  case E_GAMEMAIN:
 		  GameMainScene_Update();
 		  break;
