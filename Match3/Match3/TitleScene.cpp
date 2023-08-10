@@ -48,13 +48,13 @@ int TitleScene_Initialize(void)
 	return ret;
 }
 
-
 /**********************************************************
 * タイトル画面：更新処理
 * 引数：なし
 * 戻り値：なし
 **********************************************************/
-void TItleScene_Update(void)
+
+void TitleScene_Update(void)
 {
 	//タイトルＢＧＭ
 	if (CheckSoundMem(TitleBGM) == 0)
