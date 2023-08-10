@@ -539,7 +539,7 @@ void Set_StageMission(int mission)
 ********************************************/
 int combo_check(int y, int x)
 {
-	int ret = 0;
+	int ret = FALSE;
 
 	//縦方向のチェック
 	int CountH = 0;
