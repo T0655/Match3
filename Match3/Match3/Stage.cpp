@@ -80,7 +80,7 @@ int StageInitialize(void)
 	//画像読み込み
 	LoadDivGraph("images/block.png", BLOCK_IMAGE_MAX, BLOCK_IMAGE_MAX, 1,
   BLOCKSIZE, BLOCKSIZE, BlockImage);
-	StageImage = LoadGraph("image/stage.pnt");
+	StageImage = LoadGraph("images/stage.png");
 	//音源読み込み
 	ClickSE = LoadSoundMem("sounds/click_se.mp3");
 	FadeOutSE = LoadSoundMem("sounds/fadeout_se.mp3");
@@ -142,7 +142,7 @@ void StageDraw(void) {
 	for (int i = 0; i < ITEM_MAX; i++)
 	{
 		DrawRotaGraph(540, 245 + i * 30, 0.5f, 0, BlockImage[i + 1], TRUE, 0);
-		DrawFormatString(580, 235 + i * 30, 0xffffff, "% 3d",Item[i]);
+		DrawFormatString(580, 235 + i * 30, 0xffffff, "%3d",Item[i]);
 	}
 
 	//ブロックを描画
@@ -178,10 +178,11 @@ void StageDraw(void) {
 	for (int i = 0; i < ITEM_MAX; i++)
 	{
 		DrawRotaGraph(540, 245, + i * 30,0.5f,0,BlockImage[i + 1],TRUE,0);
-		DrawFormatString(590, 235, GetColor(255, 255, 255), "%3d",
+		DrawFormatString(580, 235+i * 30, GetColor(255, 255, 255), "%3d",
 	 Item[i]);
 	}
 }
+
 /**************************************
 *ステージ制御機能：ブロック生成処理
 * 引数：なし
@@ -195,7 +196,7 @@ void CreateBlock(void)
 	do
 	{
 		Check = 0;
-		/*for (i = 0; i < HEIGHT; i++)
+		for (i = 0; i < HEIGHT; i++)
 		{
 			for (j = 0; j < WIDTH; j++)
 			{
@@ -226,7 +227,7 @@ void CreateBlock(void)
 				}
 
 			}
-		}*/
+		}
 		//ブロック連鎖チェック
 		for (i = 1; i < HEIGHT - 1; i++)
 		{
@@ -264,15 +265,15 @@ void SelectBlock(void)
 	}
 	if (Select[SELECT_CURSOR].x > WIDTH - 3)
 	{
-		Select[SELECT_CURSOR].x > WIDTH - 3;
+		Select[SELECT_CURSOR].x = WIDTH - 3;
 	}
-	if (Select[SELECT_CURSOR].y = 0)
+	if (Select[SELECT_CURSOR].y < 0)
 	{
 		Select[SELECT_CURSOR].y = 0;
 	}
 	if (Select[SELECT_CURSOR].y > HEIGHT - 3)
 	{
-		Select[SELECT_CURSOR].y > HEIGHT - 3;
+		Select[SELECT_CURSOR].y = HEIGHT - 3;
 	}
 
 	//クリックでブロックを選択
@@ -287,10 +288,10 @@ void SelectBlock(void)
 			ClickStatus = E_ONCE;
 		}
 		else if (ClickStatus == E_ONCE &&
-			(((abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
+			((abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
 				== 1 &&
-				(abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y))
-				== 0)) ||
+				(abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)
+				== 0))||
 			(abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
 				== 0 &&
 				abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y) ==
@@ -317,8 +318,8 @@ void SelectBlock(void)
 		Result = 0;
 		Result += combo_check(Select[NEXT_CURSOR].y + 1,
 	  Select[NEXT_CURSOR].x + 1);
-		Result += combo_check(Select[NEXT_CURSOR].y + 1,
-	  Select[NEXT_CURSOR].x + 1);
+		Result += combo_check(Select[TMP_CURSOR].y + 1,
+	  Select[TMP_CURSOR].x + 1);
 
 		//連鎖が3未満なら選択ブロックを元に戻す
 		if (Result == 0)
@@ -329,7 +330,7 @@ void SelectBlock(void)
 		   1][Select[NEXT_CURSOR].x + 1].image;
 			           Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
 		    1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			           Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
+			           Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x +
 		   1].image = TmpBlock;
         }
 		else
@@ -339,7 +340,7 @@ void SelectBlock(void)
 		}
 
 			//次にクリックできるようにClockFlagを0にする
-			Stage_State = 1;
+			ClickStatus = E_NONE;
 	}
 }	
 /********************************************
@@ -475,7 +476,7 @@ void CheckBlock(void)
 void CheckClear(void)
 {
 	int i;
-	for (i = 1; i < ITEM_MAX; i++)
+	for (i = 0; i < ITEM_MAX; i++)
 	{
 		if (Item[i] >= Stage_Mission)
 		{

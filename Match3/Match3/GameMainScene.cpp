@@ -83,8 +83,8 @@ int GameMainScene_Initialize(void)
 *******************************/
 void GameMainScene_Update(void)
 {
-	switch (Get_StageState())
-	{
+  switch (Get_StageState())
+  {
 	case 0:
 		SelectBlock();          //ブロックを選択する。
 		break;
@@ -101,7 +101,7 @@ void GameMainScene_Update(void)
 
 		break;
 
-	}
+  }
 
 	//制限時間の更新
 	GameTime--;
@@ -152,6 +152,7 @@ void GameMainScene_Draw(void)
 		tmp_score /= 10;
 		PosX -= 20;
 	} while (tmp_score > 0);
+
     //制限時間の描画
 	DrawBox(491, 469, 509, 469 - GameTime / 60 * 2, 0x0033ff, TRUE);
 
