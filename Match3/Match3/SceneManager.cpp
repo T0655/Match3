@@ -92,6 +92,7 @@ void SceneManager_Update(void)
 		  GameOverScene_Update();
 		  break;
 	  default:
+
 		  break;
 	}
 }
@@ -118,6 +119,7 @@ void SceneManager_Draw(void)
 		GameOverScene_Draw();
 		break;
 	default:
+
 		break;
 	}
 }
