@@ -62,8 +62,8 @@ int GameMainScene_Initialize(void)
 	if (GameCount == 0)
 	{
 		GameScore = 0;              //スコアの初期化
-		GameLevel = 1;              //ゲームレベルの初期化
-		Set_StageMission(3);        //ミッションの初期化
+		GameLevel += 1;              //ゲームレベルの初期化
+		Set_StageMission;        //ミッションの初期化
 		GameCount++;                //次回の設定
 	}
 	else
@@ -116,6 +116,7 @@ void GameMainScene_Update(void)
 	//ミッションを達成したら、ゲームクリアに遷移する。
 	if (Get_StageClearFlag())
 	{
+		
 		Change_Scene(E_GAME_CLEAR);
 	}
 }

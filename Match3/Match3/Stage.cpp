@@ -174,13 +174,6 @@ void StageDraw(void) {
 	DrawFormatString(590, 211, GetColor(255, 255, 255), "%3d", Stage_Mission);
 
 
-	//ƒAƒCƒeƒ€‚Ìæ“¾ŒÂ”‚ğ•`‰æ
-	for (int i = 0; i < ITEM_MAX; i++)
-	{
-		DrawRotaGraph(540, 245, +i * 30, 0.5f, 0, BlockImage[i + 1], TRUE, 0);
-		DrawFormatString(580, 235 + i * 30, GetColor(255, 255, 255), "%3d",
-		Item[i]);
-	}
 }
 
 /**************************************
@@ -401,11 +394,11 @@ void MoveBlock(void)
 	//«‚ÖˆÚ“®‚·‚é
 	for (i = 1; i < HEIGHT - 1; i++)
 	{
-		for (j = 1; j < HEIGHT - 1; j++)
+		for (j = 1; j < WIDTH - 1; j++)
 		{
 			if (Block[i][j].image == 0)
 			{
-				for (k = 1; k > 0; k--)
+				for (k = i; k > 0; k--)
 				{
 					Block[k][j].image = Block[k - 1][j].image;
 					Block[k - 1][j].image = 0;
@@ -566,6 +559,11 @@ int combo_check(int y, int x)
 	if ((CountH >= 3 || CountW >= 3))
 	{
 		if (CountH >= 3)
+		{
+			Item[ColorH - 1] += CountH;
+			Stage_Score += CountH * 10;
+		}
+		if (CountW >= 3)
 		{
 			Item[ColorW - 1] += CountW;
 			Stage_Score += CountW * 10;
