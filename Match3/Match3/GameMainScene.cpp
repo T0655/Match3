@@ -62,8 +62,8 @@ int GameMainScene_Initialize(void)
 	if (GameCount == 0)
 	{
 		GameScore = 0;              //スコアの初期化
-		GameLevel += 1;              //ゲームレベルの初期化
-		Set_StageMission;        //ミッションの初期化
+		GameLevel = 1;              //ゲームレベルの初期化
+		Set_StageMission(0);        //ミッションの初期化
 		GameCount++;                //次回の設定
 	}
 	else
@@ -93,7 +93,6 @@ void GameMainScene_Update(void)
 		break;
 	case 3:
 		CheckBlock();         //ブロックの確認
-		GameScore+=10;
 		break;
 	case 4:
 		CheckClear();          //クリアチェック
@@ -130,7 +129,7 @@ void GameMainScene_Draw(void)
 {
 	int PosX = 600;
 	int tmp_level = GameLevel;
-	int tmp_score = GameScore;
+	int tmp_score = Get_StageScore();
 
 	//ステージを描画
 	StageDraw();

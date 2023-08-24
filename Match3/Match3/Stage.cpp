@@ -408,7 +408,7 @@ void MoveBlock(void)
 	}
 
 	//‹ó‚ÌƒuƒƒbƒN‚ð¶¬‚·‚éˆ—
-	for (i = 1; i < WIDTH - 1; i++)
+	for (i = 1; i < HEIGHT - 1; i++)
 	{
 		for (j = 1; j < WIDTH - 1; j++)
 		{
